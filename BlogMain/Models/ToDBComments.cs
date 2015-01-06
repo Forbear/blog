@@ -32,6 +32,7 @@ namespace BlogMain.Models
             {
                 RetPost.Post.Title = reader["Title"].ToString();
                 RetPost.Post.Text = reader["Text"].ToString();
+                RetPost.Post.Id = Id;
                 RetPost.Post.Data = DateTime.Parse(reader["Date"].ToString());
             }
             connect.Dispose();

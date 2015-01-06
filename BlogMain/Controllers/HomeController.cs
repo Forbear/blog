@@ -13,7 +13,6 @@ namespace BlogMain.Controllers
         public ActionResult Index(int? PostID)
         {
             var read = new ToDBPosts();
-            if (PostID > 200 || PostID < 1) PostID = 1;
             return View(read.GetPost(Convert.ToInt32(PostID)));
         }
 
@@ -21,16 +20,16 @@ namespace BlogMain.Controllers
         public ActionResult FullPost(int? PostID)
         {
             var read = new ToDBComments();
-            if (PostID > 200 || PostID < 1) PostID = 1;
             return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
         }
 
         [HttpPost]
-        public ActionResult FullPost(string Comment, string Name, int PostID=2)
+        public ActionResult FullPost(string Comment, string Name, int? PostID)
         {
-            var read = new ToDBPosts();
-            if (PostID > 200 || PostID < 1) PostID = 1;
-            return View(read.GetPost(PostID));
+            var read = new ToDBComments();
+            Comment obj = new Comment();
+            obj.AddComment(Name, Comment, Convert.ToInt32(PostID));
+            return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
         }
     }
 }
