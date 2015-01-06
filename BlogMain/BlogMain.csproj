@@ -128,11 +128,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddPost.cs" />
     <Compile Include="Models\CollectionComment.cs" />
     <Compile Include="Models\CollectionPost.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\MainPost.cs" />
+    <Compile Include="Models\Panel.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\ToDBAllPosts.cs" />
     <Compile Include="Models\ToDBComments.cs" />
     <Compile Include="Models\ToDBPosts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\LeftPosts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AllPosts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

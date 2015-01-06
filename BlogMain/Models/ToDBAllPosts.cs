@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace BlogMain.Models
 {
-    public class ToDBPosts
+    public class ToDBAllPosts
     {
-        public MainPost GetPost(int PostID)
+        public MainPost GetAllPosts()
         {
             MainPost RetPost = new MainPost();
 
@@ -18,12 +18,14 @@ namespace BlogMain.Models
             var command = new SqlCommand(String.Format("select * from Post where PostID > 0 ORDER by Date  DESC"));
             command.Connection = connect;
             var reader = command.ExecuteReader();
-            if (reader.Read())
+            while (reader.Read())
             {
-                RetPost.Post.Title = reader["Title"].ToString();
-                RetPost.Post.Text = reader["Text"].ToString();
-                RetPost.Post.Data = DateTime.Parse(reader["Date"].ToString());
-                RetPost.Post.Id = Convert.ToInt32(reader["PostID"].ToString());
+                Post PostObj = new Post();
+                PostObj.Id = Convert.ToInt32(reader["PostID"].ToString());
+                PostObj.Title = reader["Title"].ToString();
+                PostObj.Text = reader["Text"].ToString();
+                PostObj.Data = DateTime.Parse(reader["Date"].ToString());
+                RetPost.AllPosts.PostItems.Add(PostObj);
             }
             reader.Dispose();
             command.Dispose();
@@ -66,8 +68,8 @@ namespace BlogMain.Models
             connect4.Dispose();
             command4.Dispose();
             reader4.Dispose();
-
             return RetPost;
         }
+        
     }
 }

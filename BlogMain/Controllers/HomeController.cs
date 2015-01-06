@@ -31,5 +31,30 @@ namespace BlogMain.Controllers
             obj.AddComment(Name, Comment, Convert.ToInt32(PostID));
             return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
         }
+
+        [HttpGet]
+        public ActionResult AllPosts()
+        {
+            var read = new ToDBAllPosts();
+            return View(read.GetAllPosts());
+        }
+
+        [HttpGet]
+        public ActionResult AdminPanel()
+        {
+            var read = new Panel();
+            return View(read.AdminPanel());
+        }
+
+        [HttpPost]
+        public ActionResult AdminPanel(string Comment, string Name)
+        {
+            var read = new Panel();
+            AddPost obj = new AddPost();
+            obj.AddNewPost(Name, Comment);
+            var read2 = new ToDBPosts();
+            return View(read2.GetPost(1));
+            //return View(new MainPost());
+        }
     }
 }

@@ -11,9 +11,6 @@ namespace BlogMain.Models
         public CollectionPost()
         {
             PostItems = new Collection<Post>();
-            //PostItems.Add(new Post());
-            //PostItems.Add(new Post());
-            //PostItems.Add(new Post());
         }
         public ICollection<Post> PostItems { get; set; }
     }

@@ -1,0 +1,18 @@
+﻿@model BlogMain.Models.MainPost
+<div id="templatemo_main">
+    <div id="comment_form">
+        <form action="@Url.Action("AdminPanel", "Home")" method="post">
+            <div class="form_row">
+                <label><strong>Title</strong></label>
+                <br />
+                <input type="text" name="name" />
+            </div>
+            <div class="form_row">
+                <label><strong>Body</strong></label>
+                <br />
+                <textarea name="comment"></textarea>
+            </div>
+            <input type="submit" name="Submit" value="Submit" class="submit_btn" />
+        </form>
+    </div> <!-- end of add comment -->
+</div>

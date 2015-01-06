@@ -4,11 +4,20 @@
 @model BlogMain.Models.MainPost
 
 <div id="templatemo_sidebar">
-    <h4>Posts</h4>
+    <h4>3 Last Posts</h4>
     <ul class="templatemo_list">
         @foreach (var Item in Model.ColPost.PostItems)
         {
             <li><p>@Html.ActionLink(@Item.Title, "FullPost", new { PostID = @Item.Id })</p></li>
+        }
+    </ul>
+    <h4>3 Last Comments</h4>
+    <ul class="templatemo_list">
+        @foreach (var Item in Model.LastCom.CommentItems)
+        {
+            <li><p>@Html.ActionLink(@Item.Name, "FullPost", new { PostID = @Item.PostId })</p>
+                <p>@Item.Text</p>
+            </li>
         }
     </ul>
     <div class="cleaner_h40"></div>

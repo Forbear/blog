@@ -12,11 +12,14 @@ namespace BlogMain.Models
         {
             ColPost = new CollectionPost();
             ColCom = new CollectionComment();
+            LastCom = new CollectionComment();
+            AllPosts = new CollectionPost();
             Post = new Post();
         }
         public Post Post { get; set; }
-        public string Url { get; set; }
+        public CollectionPost AllPosts { get; set; }
         public CollectionPost ColPost { get; set; }
         public CollectionComment ColCom { get; set; }
+        public CollectionComment LastCom { get; set; }
     }
 }

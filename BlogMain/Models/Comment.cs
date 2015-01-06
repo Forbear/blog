@@ -9,17 +9,12 @@ namespace BlogMain.Models
 {
     public class Comment
     {
-        public Comment(
-            DateTime data,
-            string name = "Steve",
-            string text = "Phasellus mattis tellus eu risusLorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            int id = 0
-            )
+        public Comment(DateTime data, string name, string text, int id)
         {
-            Id = id;
             Name = name;
             Text = text;
             Data = data;
+            PostId = id;
         }
 
         public Comment()
@@ -46,7 +41,7 @@ namespace BlogMain.Models
                 }
             }
         }
-        public int Id { get; set; }
+        public int PostId { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
         public DateTime Data { get; set; }

@@ -12,9 +12,9 @@ namespace BlogMain.Models
         {
             CommentItems = new Collection<Comment>();
         }
-        public void AddItem( DateTime data, string name, string text )
+        public void AddItem( DateTime data, string name, string text, int id )
         {
-            CommentItems.Add(new Comment(data, name, text));
+            CommentItems.Add(new Comment(data, name, text, id));
         }
         public ICollection<Comment> CommentItems { get; set; }
     }

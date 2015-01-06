@@ -1,0 +1,15 @@
+﻿@model BlogMain.Models.MainPost
+<div id="templatemo_right_column">
+    <div id="templatemo_main">
+        @foreach (var Item in Model.AllPosts.PostItems)
+        {
+            <div class="post_section">
+                <h2>@Item.Title</h2>
+                <p>@Item.Data.ToString("D")</p>
+                <p>@Item.Text</p>
+                <p>@Html.ActionLink("Leave a comment", "FullPost", new { PostID = @Item.Id })</p>
+            </div>
+        }
+    </div>
+    <div class="cleaner"></div>
+</div>
