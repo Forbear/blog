@@ -1,0 +1,13 @@
+﻿@model BlogMain.Models.MainPost
+
+<div id="templatemo_right_column">
+    <div id="templatemo_main">
+        <div class="post_section">
+            <h2>@Model.Post.Title</h2>
+            <p>@Model.Post.Data.ToString("D")</p>
+            <p>@Model.Post.Text</p>
+            <p>@Html.ActionLink("Leave a comment", "FullPost", new { PostID = @Model.Post.Id})</p>
+        </div>
+    </div>
+    <div class="cleaner"></div>
+</div>

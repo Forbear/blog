@@ -1,0 +1,38 @@
+﻿@model BlogMain.Models.MainPost
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+    <link href="~/Content/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="templatemo_wrapper">
+        <div id="templatemo_menu">
+            <ul>
+                <li>@Html.ActionLink("Home Blog","Index")</li>
+            </ul>
+        </div> <!-- end of templatemo_menu -->
+
+        <div id="templatemo_left_column">
+            <div id="templatemo_header">
+                <div id="site_title">
+                    <h1>Forbear</h1>
+                </div>
+            </div> <!-- end of header -->
+
+            @Html.Partial("~/Views/Home/LeftPosts.cshtml")
+        </div> <!-- end of templatemo_left_column -->
+        @RenderBody()
+        <!-- end of templatemo_main -->
+
+        <div class="cleaner_h20"></div>
+        <div id="templatemo_footer">
+            Copyright © 2015 <a href="http://vk.com/forbear" target="_parent">Daniil Silnyagin</a>
+        </div>
+        <div class="cleaner"></div>
+    </div> <!-- end of warpper -->
+
+</body>
+</html>
