@@ -48,7 +48,7 @@ namespace BlogMain.Models
         {
             var connect = new SqlConnection(ConfigurationManager.ConnectionStrings["mssql"].ConnectionString);
             connect.Open();
-            var command = new SqlCommand(String.Format("select Name, Title, Post.PostId from Comments INNER JOIN Post ON Comments.PostID = Post.PostId where Post.PostId > 0 order by Post.PostId desc"));
+            var command = new SqlCommand(String.Format("select Name, Title, Post.PostId from Comments INNER JOIN Post ON Comments.PostID = Post.PostId where Post.PostId > 0 order by Comments.CommentId desc"));
             command.Connection = connect;
             var reader = command.ExecuteReader();
             int r = 0;
@@ -57,7 +57,6 @@ namespace BlogMain.Models
                 Comment ComObj = new Comment();
                 ComObj.Name = reader["Name"].ToString();
                 ComObj.Text = reader["Title"].ToString();
-                //ComObj.Data = DateTime.Parse(reader["Date"].ToString());
                 ComObj.PostId = Convert.ToInt32(reader["PostId"].ToString());
                 LastCom.CommentItems.Add(ComObj);
                 r++;
