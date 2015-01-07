@@ -69,6 +69,7 @@ namespace BlogMain.Controllers
             if(Name == "Forbear" && Password == "1234")
             {
                 FormsAuthentication.SetAuthCookie("Admin", false);
+                return Index();
             }
             var read = new Autorise();
             return View(read.LeftStuff());
