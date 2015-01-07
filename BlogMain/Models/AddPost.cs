@@ -14,10 +14,7 @@ namespace BlogMain.Models
             DateTime date = DateTime.Now;
             using (var sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["mssql"].ConnectionString))
             {
-                using (var sqlCommand = new SqlCommand(@"INSERT INTO Post
-                SELECT @Text, @Title, @date AS MyPost 
-                FROM Post 
-                WHERE PostID = 1"))
+                using (var sqlCommand = new SqlCommand(@"INSERT INTO Post values(@Text, @Title, @date)"))
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("Text", text));
                     sqlCommand.Parameters.Add(new SqlParameter("date", date));

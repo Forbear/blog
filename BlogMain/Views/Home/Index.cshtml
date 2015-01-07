@@ -7,6 +7,14 @@
             <p>@Model.Post.Data.ToString("D")</p>
             <p>@Model.Post.Text</p>
             <p>@Html.ActionLink("Leave a comment", "FullPost", new { PostID = @Model.Post.Id})</p>
+            @if (@HttpContext.Current.User.Identity.Name == "Admin")
+            {
+                <form action="@Url.Action("AllPosts", "Home", new { PostID = @Model.Post.Id })" method="post">
+                    <div id="comment_form">
+                        <input type="submit" name="Submit" value="Delete" class="submit_btn" />
+                    </div>
+                </form>
+            }
         </div>
     </div>
     <div class="cleaner"></div>

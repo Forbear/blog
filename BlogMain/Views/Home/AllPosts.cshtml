@@ -7,7 +7,17 @@
                 <h2>@Item.Title</h2>
                 <p>@Item.Data.ToString("D")</p>
                 <p>@Item.Text</p>
-                <p>@Html.ActionLink("Leave a comment", "FullPost", new { PostID = @Item.Id })</p>
+                <p>
+                    @Html.ActionLink("Leave a comment", "FullPost", new { PostID = @Item.Id })
+                </p>          
+                @if (@HttpContext.Current.User.Identity.Name == "Admin")
+                {
+                    <form action="@Url.Action("AllPosts", "Home", new { PostID = @Item.Id })" method="post">
+                        <div id="comment_form">
+                            <input type="submit" name="Submit" value="Delete" class="submit_btn" />
+                        </div>
+                    </form>
+                }
             </div>
         }
     </div>

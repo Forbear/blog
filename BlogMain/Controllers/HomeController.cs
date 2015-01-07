@@ -28,8 +28,12 @@ namespace BlogMain.Controllers
         public ActionResult FullPost(string Comment, string Name, int? PostID)
         {
             var read = new ToDBComments();
-            Comment obj = new Comment();
-            obj.AddComment(Name, Comment, Convert.ToInt32(PostID));
+            if(Comment.Length > 0 && Name.Length > 0)
+            {
+                Comment obj = new Comment();
+                obj.AddComment(Name, Comment, Convert.ToInt32(PostID));
+            }
+            
             return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
         }
 
@@ -40,7 +44,17 @@ namespace BlogMain.Controllers
             return View(read.GetAllPosts());
         }
 
+        [HttpPost]
+        public ActionResult AllPosts(int? PostID)
+        {
+            DellPost obj = new DellPost();
+            obj.DellOldPost(Convert.ToInt32(PostID));
+            var read = new ToDBAllPosts();
+            return View(read.GetAllPosts());
+        }
+
         [HttpGet]
+        [Authorize]
         public ActionResult AdminPanel()
         {
             var read = new Panel();
@@ -66,10 +80,9 @@ namespace BlogMain.Controllers
         [HttpPost]
         public ActionResult Autorise(string Name, string Password)
         {
-            if(Name == "Forbear" && Password == "1234")
+            if (Name == "Forbear" && Password == "1234")
             {
                 FormsAuthentication.SetAuthCookie("Admin", false);
-                return Index();
             }
             var read = new Autorise();
             return View(read.LeftStuff());
