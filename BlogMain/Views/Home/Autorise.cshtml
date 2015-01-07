@@ -1,18 +1,19 @@
 ﻿@model BlogMain.Models.MainPost
+
 <div id="templatemo_main">
     <div id="comment_form">
-        <form action="@Url.Action("AdminPanel", "Home")" method="post">
+        <form action="@Url.Action("Autorise", "Home")" method="post">
             <div class="form_row">
-                <label><strong>Title</strong></label>
+                <label><strong>Name</strong></label>
                 <br />
                 <input type="text" name="name" />
             </div>
             <div class="form_row">
-                <label><strong>Body</strong></label>
+                <label><strong>Password</strong></label>
                 <br />
-                <textarea name="comment"></textarea>
+                <input type="text" name="password" />
             </div>
             <input type="submit" name="Submit" value="Submit" class="submit_btn" />
         </form>
-    </div> <!-- end of add comment -->
+    </div>
 </div>

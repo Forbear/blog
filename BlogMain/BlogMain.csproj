@@ -129,6 +129,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddPost.cs" />
+    <Compile Include="Models\Autorise.cs" />
     <Compile Include="Models\CollectionComment.cs" />
     <Compile Include="Models\CollectionPost.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -194,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\AdminPanel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Autorise.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

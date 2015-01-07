@@ -7,7 +7,7 @@ namespace BlogMain.Models
 {
     public class Post
     {
-        public Post(string text = "Post text", string title = "Post title", int id = 0)
+        public Post(string text = "Post deleted", string title = "Post deleted", int id = 0)
         {
             Id = id;
             Text = text;

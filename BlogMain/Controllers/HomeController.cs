@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using BlogMain.Models;
 
 namespace BlogMain.Controllers
@@ -10,10 +11,10 @@ namespace BlogMain.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        public ActionResult Index(int? PostID)
+        public ActionResult Index()
         {
             var read = new ToDBPosts();
-            return View(read.GetPost(Convert.ToInt32(PostID)));
+            return View(read.GetPost());
         }
 
         [HttpGet]
@@ -47,14 +48,30 @@ namespace BlogMain.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AdminPanel(string Comment, string Name)
         {
-            var read = new Panel();
             AddPost obj = new AddPost();
             obj.AddNewPost(Name, Comment);
             var read2 = new ToDBPosts();
-            return View(read2.GetPost(1));
-            //return View(new MainPost());
+            return View(read2.GetPost());
+        }
+
+        [HttpGet]
+        public ActionResult Autorise()
+        {
+            var read = new Autorise();
+            return View(read.LeftStuff());
+        }
+        [HttpPost]
+        public ActionResult Autorise(string Name, string Password)
+        {
+            if(Name == "Forbear" && Password == "1234")
+            {
+                FormsAuthentication.SetAuthCookie("Admin", false);
+            }
+            var read = new Autorise();
+            return View(read.LeftStuff());
         }
     }
 }
