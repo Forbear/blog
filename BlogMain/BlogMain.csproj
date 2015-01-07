@@ -133,6 +133,7 @@
     <Compile Include="Models\CollectionComment.cs" />
     <Compile Include="Models\CollectionPost.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\DellComment.cs" />
     <Compile Include="Models\DellPost.cs" />
     <Compile Include="Models\MainPost.cs" />
     <Compile Include="Models\Panel.cs" />
@@ -205,6 +206,7 @@
     <None Include="Properties\PublishProfiles\forbear - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\forbear - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\forbear - Web Deploy.pubxml" />
+    <Content Include="Views\Home\FullPost2.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

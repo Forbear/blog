@@ -1,0 +1,42 @@
+﻿@model BlogMain.Models.MainPost
+
+<div id="templatemo_right_column">
+    <div id="templatemo_main">
+        <div class="post_section">
+            <h2>@Model.Post.Title</h2>
+            <p>@Model.Post.Data.ToString("D")</p>
+            <p>@Model.Post.Text</p>
+        </div>
+        <div class="comment_tab">Comments</div>
+        <div id="comment_section">
+            <ol class="comments first_level">
+                <li>
+                    @foreach (var Item in Model.ColCom.CommentItems)
+                    {
+                        <div class="comment_box commentbox1">
+                            <div class="gravatar">
+                                <img src="~/Content/images/avator.png" alt="author_img" />
+                            </div>
+                            <div class="comment_text">
+                                <div class="comment_author">@Item.Name<span class="date">@Item.Data.ToString("D")</span></div>
+                                <p>@Item.Text</p>
+                            </div>
+                            @if (@HttpContext.Current.User.Identity.Name == "Admin")
+                            {
+                                <form action="@Url.Action("FullPost2", "Home", new { CommentID = @Item.CommentId, PostID = @Item.PostId })" method="post">
+                                    <div id="comment_form">
+                                        <input type="submit" name="Submit" value="Delete" class="submit_btn" />
+                                    </div>
+                                </form>
+                            }
+                            <div class="cleaner"></div>
+                        </div>
+                    }
+            </li>
+        </ol>
+    </div>
+    @Html.Partial("~/Views/Home/AddComment.cshtml")
+</div> <!-- end of main -->
+
+<div class="cleaner"></div>
+</div>

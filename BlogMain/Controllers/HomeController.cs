@@ -37,6 +37,15 @@ namespace BlogMain.Controllers
             return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
         }
 
+        [HttpPost]
+        public ActionResult FullPost2(int? CommentID, int? PostID)
+        {
+            var read = new ToDBComments();
+            DellComment obj = new DellComment();
+            obj.DellOldComment(Convert.ToInt32(CommentID));
+            return View(read.GetPostAndComments(Convert.ToInt32(PostID)));
+        }
+
         [HttpGet]
         public ActionResult AllPosts()
         {

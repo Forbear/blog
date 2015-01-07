@@ -40,6 +40,8 @@ namespace BlogMain.Models
                 obj.Text = reader2["Text"].ToString();
                 obj.Name = reader2["Name"].ToString();
                 obj.Data = DateTime.Parse(reader2["Date"].ToString());
+                obj.CommentId = Convert.ToInt32(reader2["CommentId"].ToString());
+                obj.PostId = PostID;
                 RetPost.ColCom.CommentItems.Add(obj);
             }
             connect2.Dispose();

@@ -17,9 +17,17 @@
                             <img src="~/Content/images/avator.png" alt="author_img" />
                         </div>
                         <div class="comment_text">
-                                <div class="comment_author">@Item.Name<span class="date">@Item.Data.ToString("D")</span></div>
-                                <p>@Item.Text</p>
-                            </div>
+                            <div class="comment_author">@Item.Name<span class="date">@Item.Data.ToString("D")</span></div>
+                            <p>@Item.Text</p>
+                        </div>
+                        @if (@HttpContext.Current.User.Identity.Name == "Admin")
+                        {
+                            <form action="@Url.Action("FullPost2", "Home", new { CommentID = @Item.CommentId, PostID = @Item.PostId })" method="post">
+                                <div id="comment_form">
+                                    <input type="submit" name="Submit" value="Delete" class="submit_btn" />
+                                </div>
+                            </form>
+                        }
                         <div class="cleaner"></div>
                     </div>
                     }

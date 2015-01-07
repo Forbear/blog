@@ -41,6 +41,7 @@ namespace BlogMain.Models
                 }
             }
         }
+        public int CommentId { get; set; }
         public int PostId { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
